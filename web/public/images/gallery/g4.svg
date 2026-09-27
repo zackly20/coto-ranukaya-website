@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdba74"/><stop offset="1" stop-color="#fb923c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect x="80" y="320" width="640" height="180" rx="14" fill="#7c5a3e"/>
+  <rect x="80" y="300" width="640" height="30" rx="10" fill="#9a7350"/>
+  <ellipse cx="260" cy="292" rx="90" ry="22" fill="#ffffff" opacity="0.9"/>
+  <path d="M230 292 a30 26 0 0 0 60 0 z" fill="#b07a4a"/>
+  <ellipse cx="520" cy="292" rx="90" ry="22" fill="#ffffff" opacity="0.9"/>
+  <path d="M490 292 a30 26 0 0 0 60 0 z" fill="#c98d52"/>
+  <rect x="120" y="150" width="120" height="130" rx="10" fill="#ffffff55"/>
+  <rect x="560" y="150" width="120" height="130" rx="10" fill="#ffffff55"/>
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="#3b2a1a">Suasana Dalam</text>
+  <text x="400" y="110" text-anchor="middle" font-size="56">🪑</text>
+</svg>

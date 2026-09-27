@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdba74"/><stop offset="1" stop-color="#fb923c"/>
+    </linearGradient>
+    <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ea8c1f" stop-opacity="0.9"/><stop offset="1" stop-color="#ea8c1f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="500" rx="180" ry="26" fill="#00000022"/>
+  <path d="M310 180 h180 l-20 300 a20 20 0 0 1 -20 18 h-100 a20 20 0 0 1 -20 -18 z" fill="#ffffffcc"/>
+  <path d="M322 250 h156 l-16 228 a14 14 0 0 1 -14 12 h-96 a14 14 0 0 1 -14 -12 z" fill="url(#liq)"/>
+  <rect x="330" y="196" width="140" height="26" rx="13" fill="#ffffffee"/>
+  <path d="M460 210 l70 -60" stroke="#c0392b" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="345" cy="238" r="8" fill="#ffffffaa"/><circle cx="368" cy="230" r="6" fill="#ffffffaa"/>
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#3b2a1a">Es Jeruk</text>
+  <text x="400" y="120" text-anchor="middle" font-size="60">🍊</text>
+</svg>

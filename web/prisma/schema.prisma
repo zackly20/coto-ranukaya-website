@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  menus     Menu[]
+
+  @@map("categories")
+}
+
+model Menu {
+  id          Int      @id @default(autoincrement())
+  categoryId  Int      @map("category_id")
+  name        String
+  description String   @default("")
+  price       Int
+  image       String   @default("")
+  isAvailable Boolean  @default(true) @map("is_available")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  category   Category    @relation(fields: [categoryId], references: [id])
+  orderItems OrderItem[]
+
+  @@map("menus")
+}
+
+model Order {
+  id            Int      @id @default(autoincrement())
+  orderCode     String   @unique @map("order_code")
+  customerName  String   @map("customer_name")
+  phone         String
+  orderType     String   @map("order_type") // dine_in | takeaway | delivery
+  address       String?
+  tableNumber   String?  @map("table_number")
+  pickupTime    String?  @map("pickup_time")
+  total         Int
+  paymentMethod String   @map("payment_method") // cash | transfer | qris
+  paymentStatus String   @default("unpaid") @map("payment_status") // unpaid | paid
+  orderStatus   String   @default("received") @map("order_status") // received | confirmed | processing | ready | delivering | done | cancelled
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  items OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id       Int    @id @default(autoincrement())
+  orderId  Int    @map("order_id")
+  menuId   Int    @map("menu_id")
+  quantity Int
+  price    Int
+  notes    String @default("")
+  subtotal Int
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menu  Menu  @relation(fields: [menuId], references: [id])
+
+  @@map("order_items")
+}
+
+model Review {
+  id           Int      @id @default(autoincrement())
+  orderId      Int?     @map("order_id")
+  customerName String   @map("customer_name")
+  rating       Int
+  comment      String   @default("")
+  status       String   @default("pending") // pending | approved | rejected
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("reviews")
+}
+
+model Promo {
+  id            Int       @id @default(autoincrement())
+  name          String
+  description   String    @default("")
+  discountType  String    @map("discount_type") // percent | fixed
+  discountValue Int       @map("discount_value")
+  startDate     DateTime? @map("start_date")
+  endDate       DateTime? @map("end_date")
+  status        String    @default("active") // active | inactive
+
+  @@map("promos")
+}
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  title     String
+  image     String
+  category  String   @default("makanan") // makanan | minuman | suasana | restoran
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("gallery")
+}
+
+model RestaurantSettings {
+  id          Int    @id @default(autoincrement())
+  name        String
+  address     String
+  phone       String
+  whatsapp    String
+  mapsUrl     String @map("maps_url")
+  plusCode    String @default("")
+  description String @default("")
+  priceRange  String @map("price_range")
+
+  @@map("restaurant_settings")
+}
+
+model OperatingHour {
+  id        Int     @id @default(autoincrement())
+  day       Int     @unique // 0 = Minggu ... 6 = Sabtu
+  openTime  String  @map("open_time")
+  closeTime String  @map("close_time")
+  isOpen    Boolean @default(true) @map("is_open")
+
+  @@map("operating_hours")
+}

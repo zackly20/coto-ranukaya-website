@@ -1,0 +1,35 @@
+# dependencies
+web/node_modules
+
+# next.js
+web/.next/
+web/out/
+
+# production
+web/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env
+web/.env
+web/.env*.local
+
+# typescript
+*.tsbuildinfo
+web/next-env.d.ts
+
+# database sqlite
+web/prisma/dev.db
+web/prisma/dev.db-journal
+
+# dokumen privat (PRD dll) - tidak untuk dipublikasikan
+*.pdf
+docs/
